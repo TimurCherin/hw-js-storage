@@ -1,0 +1,8 @@
+.todo-list{
+    list-style: none;
+}
+.todo-button {
+    border-radius: 25px;
+    border-color: blueviolet;
+    background-color: skyblue;
+}

@@ -1,0 +1,1 @@
+{"mappings":"AAAA;;;;AAGA","sources":["src/css/style.css"],"sourcesContent":[".todo-list{\r\n    list-style: none;\r\n}\r\n.todo-button {\r\n    border-radius: 25px;\r\n    border-color: blueviolet;\r\n    background-color: skyblue;\r\n}"],"names":[],"version":3,"file":"index.c92073ef.css.map","sourceRoot":"/__parcel_source_root/"}

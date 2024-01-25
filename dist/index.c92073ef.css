@@ -2,10 +2,19 @@
   list-style: none;
 }
 
+.todo-item {
+  margin-bottom: 5px;
+}
+
 .todo-button {
   background-color: #87ceeb;
   border-color: #8a2be2;
   border-radius: 25px;
+  margin-left: 10px;
+}
+
+.done {
+  text-decoration: line-through;
 }
 
 /*# sourceMappingURL=index.c92073ef.css.map */

@@ -1,8 +1,16 @@
 .todo-list{
     list-style: none;
 }
+.todo-item {
+    margin-bottom: 5px;
+}
 .todo-button {
     border-radius: 25px;
     border-color: blueviolet;
     background-color: skyblue;
+    margin-left: 10px;
+}
+
+.done {
+    text-decoration: line-through;
 }

@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"gRY1p":[function(require,module,exports) {
+})({"7uqbH":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "ba60c367739bf03c";
+module.bundle.HMR_BUNDLE_ID = "cfd36d464bef0bed";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -578,180 +578,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"ebWYT":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _templateHbs = require("../templates/template.hbs");
-var _templateHbsDefault = parcelHelpers.interopDefault(_templateHbs);
-var _nanoid = require("nanoid");
-const addItem = document.querySelector(".addItem");
-const addItemBtn = document.querySelector(".addItemBtn");
-const submitInput = document.querySelector(".submit-input");
-const submitForm = document.querySelector(".submit-form");
-const submitBtn = document.querySelector(".submit-btn");
-const check = prompt("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0432\u0430\u0448 \u043C\u0438\u043D\u0443\u043B\u0438\u0439 \u043B\u043E\u0433\u0456\u043D");
-alert("\u0429\u043E\u0431 \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438 \u0447\u0438 \u0432\u0432\u0435\u043B\u0438 \u0432\u0438 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E \u043B\u043E\u0433\u0456\u043D \u043D\u0430\u043F\u0438\u0448\u0456\u0442\u044C \u0439\u043E\u0433\u043E \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E \u0432 \u0456\u043D\u043F\u0443\u0442");
-function markup(taskList) {
-    const list = document.querySelector(".todo-list");
-    list.innerHTML = (0, _templateHbsDefault.default)({
-        taskList
-    });
-    list.addEventListener("click", onEdit);
-}
-if (localStorage.getItem("taskList")) {
-    const taskList = JSON.parse(localStorage.getItem("taskList"));
-    markup(taskList);
-}
-addItemBtn.addEventListener("click", onAddTask);
-function onAddTask(e) {
-    if (!localStorage.getItem("taskList")) localStorage.setItem("taskList", "[]");
-    const taskList = JSON.parse(localStorage.getItem("taskList"));
-    const currentTask = addItem.value;
-    if (!currentTask) return;
-    const newTask = {
-        id: (0, _nanoid.nanoid)(),
-        task: currentTask,
-        status: false
-    };
-    taskList.push(newTask);
-    addItem.value = "";
-    markup(taskList);
-    localStorage.setItem("taskList", JSON.stringify(taskList));
-}
-function onEdit(e) {
-    if (e.target.nodeName === "BUTTON" && e.target.hasAttribute("data-id")) {
-        const editId = e.target.dataset.id;
-        const taskList = JSON.parse(localStorage.getItem("taskList"));
-        const editIndex = taskList.map((ts)=>ts.id).indexOf(editId);
-        if (taskList[editIndex].status) taskList[editIndex].status = false;
-        else taskList[editIndex].status = true;
-        markup(taskList);
-        localStorage.setItem("taskList", JSON.stringify(taskList));
-    }
-}
-submitBtn.addEventListener("click", onSubmit);
-function onSubmit(e) {
-    e.preventDefault();
-    const info = JSON.stringify(submitInput.value);
-    const currentInfo = localStorage.getItem("info", info);
-    localStorage.setItem("info", info);
-    if (`"${check}"` == currentInfo) alert("\u0412\u0438 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E \u0432\u0432\u0435\u043B\u0438 \u043C\u0438\u043D\u0443\u043B\u0438\u0439 \u043B\u043E\u0433\u0456\u043D");
-    else alert("\u0412\u0438 \u043D\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E \u0432\u0432\u0435\u043B\u0438 \u043C\u0438\u043D\u0443\u043B\u0438\u0439 \u043B\u043E\u0433\u0456\u043D");
-}
-
-},{"../templates/template.hbs":"73Ftt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","nanoid":"2ifus"}],"73Ftt":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _handlebars = require("handlebars");
-var _handlebarsDefault = parcelHelpers.interopDefault(_handlebars);
-const templateFunction = (0, _handlebarsDefault.default).template({
-    "1": function(container, depth0, helpers, partials, data) {
-        var stack1, helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
-            return undefined;
-        };
-        return '<li class="todo-item ' + ((stack1 = lookupProperty(helpers, "if").call(alias1, depth0 != null ? lookupProperty(depth0, "status") : depth0, {
-            "name": "if",
-            "hash": {},
-            "fn": container.program(2, data, 0),
-            "inverse": container.noop,
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 2,
-                    "column": 21
-                },
-                "end": {
-                    "line": 2,
-                    "column": 48
-                }
-            }
-        })) != null ? stack1 : "") + '">' + alias4((helper = (helper = lookupProperty(helpers, "task") || (depth0 != null ? lookupProperty(depth0, "task") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
-            "name": "task",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 2,
-                    "column": 50
-                },
-                "end": {
-                    "line": 2,
-                    "column": 58
-                }
-            }
-        }) : helper)) + '<button class="todo-button" type="submit" data-id="' + alias4((helper = (helper = lookupProperty(helpers, "id") || (depth0 != null ? lookupProperty(depth0, "id") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
-            "name": "id",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 2,
-                    "column": 109
-                },
-                "end": {
-                    "line": 2,
-                    "column": 115
-                }
-            }
-        }) : helper)) + '">' + ((stack1 = lookupProperty(helpers, "if").call(alias1, depth0 != null ? lookupProperty(depth0, "status") : depth0, {
-            "name": "if",
-            "hash": {},
-            "fn": container.program(4, data, 0),
-            "inverse": container.program(6, data, 0),
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 2,
-                    "column": 117
-                },
-                "end": {
-                    "line": 2,
-                    "column": 161
-                }
-            }
-        })) != null ? stack1 : "") + "</button></li>\r\n";
-    },
-    "2": function(container, depth0, helpers, partials, data) {
-        return " done ";
-    },
-    "4": function(container, depth0, helpers, partials, data) {
-        return "Restart";
-    },
-    "6": function(container, depth0, helpers, partials, data) {
-        return "Get done";
-    },
-    "compiler": [
-        8,
-        ">= 4.3.0"
-    ],
-    "main": function(container, depth0, helpers, partials, data) {
-        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
-            return undefined;
-        };
-        return (stack1 = lookupProperty(helpers, "each").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "taskList") : depth0, {
-            "name": "each",
-            "hash": {},
-            "fn": container.program(1, data, 0),
-            "inverse": container.noop,
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 1,
-                    "column": 0
-                },
-                "end": {
-                    "line": 3,
-                    "column": 9
-                }
-            }
-        })) != null ? stack1 : "";
-    },
-    "useData": true
-});
-exports.default = templateFunction;
-
-},{"handlebars":"56TWV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"56TWV":[function(require,module,exports) {
+},{}],"56TWV":[function(require,module,exports) {
 "use strict";
 exports.__esModule = true;
 // istanbul ignore next
@@ -11953,41 +11780,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"2ifus":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "urlAlphabet", ()=>(0, _indexJs.urlAlphabet));
-parcelHelpers.export(exports, "random", ()=>random);
-parcelHelpers.export(exports, "customRandom", ()=>customRandom);
-parcelHelpers.export(exports, "customAlphabet", ()=>customAlphabet);
-parcelHelpers.export(exports, "nanoid", ()=>nanoid);
-var _indexJs = require("./url-alphabet/index.js");
-let random = (bytes)=>crypto.getRandomValues(new Uint8Array(bytes));
-let customRandom = (alphabet, defaultSize, getRandom)=>{
-    let mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1;
-    let step = -~(1.6 * mask * defaultSize / alphabet.length);
-    return (size = defaultSize)=>{
-        let id = "";
-        while(true){
-            let bytes = getRandom(step);
-            let j = step;
-            while(j--){
-                id += alphabet[bytes[j] & mask] || "";
-                if (id.length === size) return id;
-            }
-        }
-    };
-};
-let customAlphabet = (alphabet, size = 21)=>customRandom(alphabet, size, random);
-let nanoid = (size = 21)=>crypto.getRandomValues(new Uint8Array(size)).reduce((id, byte)=>{
-        byte &= 63;
-        if (byte < 36) id += byte.toString(36);
-        else if (byte < 62) id += (byte - 26).toString(36).toUpperCase();
-        else if (byte > 62) id += "-";
-        else id += "_";
-        return id;
-    }, "");
+},{}]},["7uqbH"], null, "parcelRequire94c2")
 
-},{"./url-alphabet/index.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["gRY1p","ebWYT"], "ebWYT", "parcelRequire94c2")
-
-//# sourceMappingURL=index.739bf03c.js.map
+//# sourceMappingURL=task1.4bef0bed.js.map

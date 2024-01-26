@@ -17,4 +17,20 @@
   text-decoration: line-through;
 }
 
+form {
+  flex-direction: column;
+  width: 300px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+input {
+  margin-bottom: 5px;
+}
+
+.submit-btn {
+  background-color: #daa520;
+}
+
 /*# sourceMappingURL=index.c92073ef.css.map */

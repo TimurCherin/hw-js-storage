@@ -14,3 +14,19 @@
 .done {
     text-decoration: line-through;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    }
+
+input {
+    margin-bottom: 5px;
+}
+
+.submit-btn {
+    background-color: goldenrod;
+}

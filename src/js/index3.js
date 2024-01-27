@@ -16,10 +16,8 @@ function onAdd(e) {
     }
     const linkList = JSON.parse(localStorage.getItem("links"))
     const newLink = addInput.value
-    if (newLink) {
         linkList.push(newLink)
         markup(linkList)
         localStorage.setItem("links", linkList)
         addInput.value = ""   
-    }
 }

@@ -599,12 +599,10 @@ function onAdd(e) {
     if (!localStorage.getItem("links")) localStorage.setItem("links", "[]");
     const linkList = JSON.parse(localStorage.getItem("links"));
     const newLink = addInput.value;
-    if (newLink) {
-        linkList.push(newLink);
-        markup(linkList);
-        localStorage.setItem("links", linkList);
-        addInput.value = "";
-    }
+    linkList.push(newLink);
+    markup(linkList);
+    localStorage.setItem("links", linkList);
+    addInput.value = "";
 }
 
 },{"../templates/link.hbs":"i1MdA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i1MdA":[function(require,module,exports) {

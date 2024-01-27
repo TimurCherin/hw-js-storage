@@ -1,0 +1,22 @@
+ <table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>lastName</th>
+      <th>phone</th>
+      <th>email</th>
+      <th>settings</th>
+    </tr>
+  </thead>
+  <tbody class="tbody">
+    {{#each contacts}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{lastName}}</td>
+      <td>{{phone}}</td>
+      <td>{{email}}</td>
+      <td><button data-editId={{id}} class="edit">Edit</button><button data-delId={{id}} class="del">Delete</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

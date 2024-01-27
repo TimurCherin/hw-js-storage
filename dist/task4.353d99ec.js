@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"5BcqA":[function(require,module,exports) {
+})({"6yaRl":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "f8440543a5248542";
+module.bundle.HMR_BUNDLE_ID = "838ca23d353d99ec";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -578,127 +578,8 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"30wP2":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _linkHbs = require("../templates/link.hbs");
-var _linkHbsDefault = parcelHelpers.interopDefault(_linkHbs);
-const addBtn = document.querySelector(".link-btn");
-const addInput = document.querySelector(".link-input");
-const list = document.querySelector(".link-list");
-addBtn.addEventListener("click", onAdd);
-function markup(linkList) {
-    list.innerHTML = (0, _linkHbsDefault.default)({
-        linkList
-    });
-    const delBtn = document.querySelector(".del-btn");
-    const editBtn = document.querySelector(".edit-btn");
-    list.addEventListener("click", onDel);
-    list.addEventListener("click", onEdit);
-}
-markup(JSON.parse(localStorage.getItem("links")));
-function onAdd(e) {
-    if (!localStorage.getItem("links")) localStorage.setItem("links", "[]");
-    const linkList = JSON.parse(localStorage.getItem("links"));
-    const newLink = addInput.value;
-    if (newLink) {
-        linkList.push(newLink);
-        localStorage.setItem("links", JSON.stringify(linkList));
-        markup(linkList);
-        addInput.value = "";
-    }
-}
-function onDel(e) {
-    if (e.target.nodeName === "BUTTON" && e.target.hasAttribute("data-delete")) {
-        const delIndex = e.target.dataset.delete;
-        const linkList = JSON.parse(localStorage.getItem("links"));
-        linkList.splice(delIndex, 1);
-        localStorage.setItem("links", JSON.stringify(linkList));
-        markup(linkList);
-    }
-}
-function onEdit(e) {
-    if (e.target.nodeName === "BUTTON" && e.target.hasAttribute("data-edit")) {
-        const newLink = prompt("Enter new name");
-        const editIndex = e.target.dataset.edit;
-        const linkList = JSON.parse(localStorage.getItem("links"));
-        linkList.splice(editIndex, 1, newLink);
-        localStorage.setItem("links", JSON.stringify(linkList));
-        markup(linkList);
-    }
-}
+},{}],"6plYS":[function(require,module,exports) {
 
-},{"../templates/link.hbs":"i1MdA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i1MdA":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _handlebars = require("handlebars");
-var _handlebarsDefault = parcelHelpers.interopDefault(_handlebars);
-const templateFunction = (0, _handlebarsDefault.default).template({
-    "1": function(container, depth0, helpers, partials, data) {
-        var helper, alias1 = container.lambda, alias2 = container.escapeExpression, alias3 = depth0 != null ? depth0 : container.nullContext || {}, alias4 = container.hooks.helperMissing, alias5 = "function", lookupProperty = container.lookupProperty || function(parent, propertyName) {
-            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
-            return undefined;
-        };
-        return '<li class="link-item"><a target="_blank" href="' + alias2(alias1(depth0, depth0)) + '">' + alias2(alias1(depth0, depth0)) + '</a>\r\n        <button class="del-btn" data-delete="' + alias2((helper = (helper = lookupProperty(helpers, "index") || data && lookupProperty(data, "index")) != null ? helper : alias4, typeof helper === alias5 ? helper.call(alias3, {
-            "name": "index",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 3,
-                    "column": 45
-                },
-                "end": {
-                    "line": 3,
-                    "column": 55
-                }
-            }
-        }) : helper)) + '" type="button">Delete</button>\r\n        <button class="edit-btn" data-edit="' + alias2((helper = (helper = lookupProperty(helpers, "index") || data && lookupProperty(data, "index")) != null ? helper : alias4, typeof helper === alias5 ? helper.call(alias3, {
-            "name": "index",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 4,
-                    "column": 44
-                },
-                "end": {
-                    "line": 4,
-                    "column": 54
-                }
-            }
-        }) : helper)) + '" type="button">Edit</button>\r\n</li>\r\n';
-    },
-    "compiler": [
-        8,
-        ">= 4.3.0"
-    ],
-    "main": function(container, depth0, helpers, partials, data) {
-        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
-            return undefined;
-        };
-        return (stack1 = lookupProperty(helpers, "each").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "linkList") : depth0, {
-            "name": "each",
-            "hash": {},
-            "fn": container.program(1, data, 0),
-            "inverse": container.noop,
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 1,
-                    "column": 0
-                },
-                "end": {
-                    "line": 6,
-                    "column": 9
-                }
-            }
-        })) != null ? stack1 : "";
-    },
-    "useData": true
-});
-exports.default = templateFunction;
+},{}]},["6yaRl","6plYS"], "6plYS", "parcelRequire94c2")
 
-},{"handlebars":"56TWV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["5BcqA","30wP2"], "30wP2", "parcelRequire94c2")
-
-//# sourceMappingURL=task3.a5248542.js.map
+//# sourceMappingURL=task4.353d99ec.js.map

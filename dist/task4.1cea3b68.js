@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"5BcqA":[function(require,module,exports) {
+})({"i3WGQ":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "f8440543a5248542";
+module.bundle.HMR_BUNDLE_ID = "3279de2b1cea3b68";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -578,95 +578,191 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"30wP2":[function(require,module,exports) {
+},{}],"mtmJO":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _linkHbs = require("../templates/link.hbs");
-var _linkHbsDefault = parcelHelpers.interopDefault(_linkHbs);
-const addBtn = document.querySelector(".link-btn");
-const addInput = document.querySelector(".link-input");
-const list = document.querySelector(".link-list");
-addBtn.addEventListener("click", onAdd);
-function markup(linkList) {
-    list.innerHTML = (0, _linkHbsDefault.default)({
-        linkList
+var _contactTemplateHbs = require("../templates/contactTemplate.hbs");
+var _contactTemplateHbsDefault = parcelHelpers.interopDefault(_contactTemplateHbs);
+var _nanoid = require("nanoid");
+const wrap = document.querySelector(".wrap");
+wrap.addEventListener("click", onDel);
+wrap.addEventListener("click", onEdit);
+const closeBtn = document.querySelector(".close-btn");
+closeBtn.addEventListener("click", closeModal);
+function markup(contacts) {
+    wrap.innerHTML = (0, _contactTemplateHbsDefault.default)({
+        contacts
     });
-    const delBtn = document.querySelector(".del-btn");
-    const editBtn = document.querySelector(".edit-btn");
-    list.addEventListener("click", onDel);
-    list.addEventListener("click", onEdit);
+    const tbody = document.querySelector(".tbody");
 }
-markup(JSON.parse(localStorage.getItem("links")));
+if (localStorage.getItem("contacts")) {
+    const contacts = JSON.parse(localStorage.getItem("contacts"));
+    markup(contacts);
+}
+const form = document.querySelector(".contact-form");
+form.addEventListener("submit", onAdd);
 function onAdd(e) {
-    if (!localStorage.getItem("links")) localStorage.setItem("links", "[]");
-    const linkList = JSON.parse(localStorage.getItem("links"));
-    const newLink = addInput.value;
-    if (newLink) {
-        linkList.push(newLink);
-        localStorage.setItem("links", JSON.stringify(linkList));
-        markup(linkList);
-        addInput.value = "";
-    }
+    e.preventDefault();
+    const data = e.currentTarget.elements;
+    const name = data.name.value;
+    const lastName = data.lastName.value;
+    const phone = data.phone.value;
+    const email = data.email.value;
+    const newContact = {
+        id: (0, _nanoid.nanoid)(),
+        name: name,
+        lastName: lastName,
+        phone: phone,
+        email: email
+    };
+    if (!localStorage.getItem("contacts")) localStorage.setItem("contacts", "[]");
+    const contacts = JSON.parse(localStorage.getItem("contacts"));
+    contacts.push(newContact);
+    markup(contacts);
+    form.reset();
+    localStorage.setItem("contacts", JSON.stringify(contacts));
 }
 function onDel(e) {
-    if (e.target.nodeName === "BUTTON" && e.target.hasAttribute("data-delete")) {
-        const delIndex = e.target.dataset.delete;
-        const linkList = JSON.parse(localStorage.getItem("links"));
-        linkList.splice(delIndex, 1);
-        localStorage.setItem("links", JSON.stringify(linkList));
-        markup(linkList);
+    if (e.target.nodeName === "BUTTON" && e.target.hasAttribute("data-delId")) {
+        const delId = e.target.dataset.delid;
+        const contacts = JSON.parse(localStorage.getItem("contacts"));
+        const index = contacts.map((contact)=>contact.id).indexOf(delId);
+        contacts.splice(index, 1);
+        markup(contacts);
+        localStorage.setItem("contacts", JSON.stringify(contacts));
     }
 }
+const modal = document.querySelector(".backdrop");
+const modalForm = document.querySelector(".modal-form");
 function onEdit(e) {
-    if (e.target.nodeName === "BUTTON" && e.target.hasAttribute("data-edit")) {
-        const newLink = prompt("Enter new name");
-        const editIndex = e.target.dataset.edit;
-        const linkList = JSON.parse(localStorage.getItem("links"));
-        linkList.splice(editIndex, 1, newLink);
-        localStorage.setItem("links", JSON.stringify(linkList));
-        markup(linkList);
+    if (e.target.nodeName === "BUTTON" && e.target.hasAttribute("data-editId")) {
+        const editId = e.target.dataset.editid;
+        const contacts = JSON.parse(localStorage.getItem("contacts"));
+        const editIndex = contacts.map((contact)=>contact.id).indexOf(editId);
+        modal.classList.remove("hide");
+        modalForm.addEventListener("submit", onEditContact);
+        function onEditContact(e) {
+            e.preventDefault();
+            const data = e.currentTarget.elements;
+            const name = data.name.value;
+            const lastName = data.lastName.value;
+            const phone = data.phone.value;
+            const email = data.email.value;
+            const newContact = {};
+            name && (newContact.name = name);
+            lastName && (newContact.lastName = lastName);
+            phone && (newContact.phone = phone);
+            email && (newContact.email = email);
+            contacts[editIndex] = {
+                ...contacts[editIndex],
+                ...newContact
+            };
+            markup(contacts);
+            modalForm.reset();
+            modal.classList.add("hide");
+            localStorage.setItem("contacts", JSON.stringify(contacts));
+        }
     }
+}
+function closeModal() {
+    modal.classList.add("hide");
 }
 
-},{"../templates/link.hbs":"i1MdA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i1MdA":[function(require,module,exports) {
+},{"../templates/contactTemplate.hbs":"dC9RQ","nanoid":"2ifus","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dC9RQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _handlebars = require("handlebars");
 var _handlebarsDefault = parcelHelpers.interopDefault(_handlebars);
 const templateFunction = (0, _handlebarsDefault.default).template({
     "1": function(container, depth0, helpers, partials, data) {
-        var helper, alias1 = container.lambda, alias2 = container.escapeExpression, alias3 = depth0 != null ? depth0 : container.nullContext || {}, alias4 = container.hooks.helperMissing, alias5 = "function", lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
             return undefined;
         };
-        return '<li class="link-item"><a target="_blank" href="' + alias2(alias1(depth0, depth0)) + '">' + alias2(alias1(depth0, depth0)) + '</a>\r\n        <button class="del-btn" data-delete="' + alias2((helper = (helper = lookupProperty(helpers, "index") || data && lookupProperty(data, "index")) != null ? helper : alias4, typeof helper === alias5 ? helper.call(alias3, {
-            "name": "index",
+        return "    <tr>\r\n      <td>" + alias4((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "name",
             "hash": {},
             "data": data,
             "loc": {
                 "start": {
-                    "line": 3,
-                    "column": 45
+                    "line": 14,
+                    "column": 10
                 },
                 "end": {
-                    "line": 3,
-                    "column": 55
+                    "line": 14,
+                    "column": 18
                 }
             }
-        }) : helper)) + '" type="button">Delete</button>\r\n        <button class="edit-btn" data-edit="' + alias2((helper = (helper = lookupProperty(helpers, "index") || data && lookupProperty(data, "index")) != null ? helper : alias4, typeof helper === alias5 ? helper.call(alias3, {
-            "name": "index",
+        }) : helper)) + "</td>\r\n      <td>" + alias4((helper = (helper = lookupProperty(helpers, "lastName") || (depth0 != null ? lookupProperty(depth0, "lastName") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "lastName",
             "hash": {},
             "data": data,
             "loc": {
                 "start": {
-                    "line": 4,
-                    "column": 44
+                    "line": 15,
+                    "column": 10
                 },
                 "end": {
-                    "line": 4,
-                    "column": 54
+                    "line": 15,
+                    "column": 22
                 }
             }
-        }) : helper)) + '" type="button">Edit</button>\r\n</li>\r\n';
+        }) : helper)) + "</td>\r\n      <td>" + alias4((helper = (helper = lookupProperty(helpers, "phone") || (depth0 != null ? lookupProperty(depth0, "phone") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "phone",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 16,
+                    "column": 10
+                },
+                "end": {
+                    "line": 16,
+                    "column": 19
+                }
+            }
+        }) : helper)) + "</td>\r\n      <td>" + alias4((helper = (helper = lookupProperty(helpers, "email") || (depth0 != null ? lookupProperty(depth0, "email") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "email",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 17,
+                    "column": 10
+                },
+                "end": {
+                    "line": 17,
+                    "column": 19
+                }
+            }
+        }) : helper)) + "</td>\r\n      <td><button data-editId=" + alias4((helper = (helper = lookupProperty(helpers, "id") || (depth0 != null ? lookupProperty(depth0, "id") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "id",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 18,
+                    "column": 30
+                },
+                "end": {
+                    "line": 18,
+                    "column": 36
+                }
+            }
+        }) : helper)) + ' class="edit">Edit</button><button data-delId=' + alias4((helper = (helper = lookupProperty(helpers, "id") || (depth0 != null ? lookupProperty(depth0, "id") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "id",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 18,
+                    "column": 82
+                },
+                "end": {
+                    "line": 18,
+                    "column": 88
+                }
+            }
+        }) : helper)) + ' class="del">Delete</button></td>\r\n    </tr>\r\n';
     },
     "compiler": [
         8,
@@ -677,7 +773,7 @@ const templateFunction = (0, _handlebarsDefault.default).template({
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
             return undefined;
         };
-        return (stack1 = lookupProperty(helpers, "each").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "linkList") : depth0, {
+        return ' <table>\r\n  <thead>\r\n    <tr>\r\n      <th>name</th>\r\n      <th>lastName</th>\r\n      <th>phone</th>\r\n      <th>email</th>\r\n      <th>settings</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody class="tbody">\r\n' + ((stack1 = lookupProperty(helpers, "each").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "contacts") : depth0, {
             "name": "each",
             "hash": {},
             "fn": container.program(1, data, 0),
@@ -685,20 +781,55 @@ const templateFunction = (0, _handlebarsDefault.default).template({
             "data": data,
             "loc": {
                 "start": {
-                    "line": 1,
-                    "column": 0
+                    "line": 12,
+                    "column": 4
                 },
                 "end": {
-                    "line": 6,
-                    "column": 9
+                    "line": 20,
+                    "column": 13
                 }
             }
-        })) != null ? stack1 : "";
+        })) != null ? stack1 : "") + "  </tbody>\r\n</table>";
     },
     "useData": true
 });
 exports.default = templateFunction;
 
-},{"handlebars":"56TWV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["5BcqA","30wP2"], "30wP2", "parcelRequire94c2")
+},{"handlebars":"56TWV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2ifus":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "urlAlphabet", ()=>(0, _indexJs.urlAlphabet));
+parcelHelpers.export(exports, "random", ()=>random);
+parcelHelpers.export(exports, "customRandom", ()=>customRandom);
+parcelHelpers.export(exports, "customAlphabet", ()=>customAlphabet);
+parcelHelpers.export(exports, "nanoid", ()=>nanoid);
+var _indexJs = require("./url-alphabet/index.js");
+let random = (bytes)=>crypto.getRandomValues(new Uint8Array(bytes));
+let customRandom = (alphabet, defaultSize, getRandom)=>{
+    let mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1;
+    let step = -~(1.6 * mask * defaultSize / alphabet.length);
+    return (size = defaultSize)=>{
+        let id = "";
+        while(true){
+            let bytes = getRandom(step);
+            let j = step;
+            while(j--){
+                id += alphabet[bytes[j] & mask] || "";
+                if (id.length === size) return id;
+            }
+        }
+    };
+};
+let customAlphabet = (alphabet, size = 21)=>customRandom(alphabet, size, random);
+let nanoid = (size = 21)=>crypto.getRandomValues(new Uint8Array(size)).reduce((id, byte)=>{
+        byte &= 63;
+        if (byte < 36) id += byte.toString(36);
+        else if (byte < 62) id += (byte - 26).toString(36).toUpperCase();
+        else if (byte > 62) id += "-";
+        else id += "_";
+        return id;
+    }, "");
 
-//# sourceMappingURL=task3.a5248542.js.map
+},{"./url-alphabet/index.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["i3WGQ","mtmJO"], "mtmJO", "parcelRequire94c2")
+
+//# sourceMappingURL=task4.1cea3b68.js.map

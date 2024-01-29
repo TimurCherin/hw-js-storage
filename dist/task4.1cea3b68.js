@@ -584,6 +584,10 @@ var _contactTemplateHbs = require("../templates/contactTemplate.hbs");
 var _contactTemplateHbsDefault = parcelHelpers.interopDefault(_contactTemplateHbs);
 var _nanoid = require("nanoid");
 const wrap = document.querySelector(".wrap");
+const nameOfInput = document.querySelector(".name-input");
+const lastnameOfInput = document.querySelector(".lastname-input");
+const phoneOfInput = document.querySelector(".phone-input");
+const emailOfInput = document.querySelector(".email-input");
 wrap.addEventListener("click", onDel);
 wrap.addEventListener("click", onEdit);
 const closeBtn = document.querySelector(".close-btn");
@@ -638,6 +642,11 @@ function onEdit(e) {
         const editId = e.target.dataset.editid;
         const contacts = JSON.parse(localStorage.getItem("contacts"));
         const editIndex = contacts.map((contact)=>contact.id).indexOf(editId);
+        const editedContact = contacts[editIndex];
+        nameOfInput.value = editedContact.name;
+        lastnameOfInput.value = editedContact.lastName;
+        phoneOfInput.value = editedContact.phone;
+        emailOfInput.value = editedContact.email;
         modal.classList.remove("hide");
         modalForm.addEventListener("submit", onEditContact);
         function onEditContact(e) {
@@ -647,11 +656,12 @@ function onEdit(e) {
             const lastName = data.lastName.value;
             const phone = data.phone.value;
             const email = data.email.value;
-            const newContact = {};
-            name && (newContact.name = name);
-            lastName && (newContact.lastName = lastName);
-            phone && (newContact.phone = phone);
-            email && (newContact.email = email);
+            const newContact = {
+                name,
+                lastName,
+                phone,
+                email
+            };
             contacts[editIndex] = {
                 ...contacts[editIndex],
                 ...newContact

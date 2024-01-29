@@ -76,6 +76,7 @@ function onEditContact(e) {
     modalForm.reset()
     modal.classList.add("hide")
     localStorage.setItem("contacts", JSON.stringify(contacts))
+    modalForm.removeEventListener("submit", onEditContact);
 }
     }
 }

@@ -15,7 +15,7 @@ function markup(contacts) {
 }
 if (localStorage.getItem("contacts")) {
     const contacts = JSON.parse(localStorage.getItem("contacts"))
-    markup(contacts)   
+    markup(contacts)  
 }   
 const form = document.querySelector(".contact-form")
 form.addEventListener("submit", onAdd)

@@ -43,6 +43,6 @@ function onEdit(e) {
       taskList[editIndex].status = true;
     }
     markup(taskList);
-    localStorage.setItem("taskList", JSON.stringify(taskList));
+    localStorage.setItem("taskList", JSON.stringify(taskList))
   }
 }

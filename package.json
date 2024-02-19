@@ -13,5 +13,5 @@
   },
   "devDependencies": {
     "parcel-transformer-hbs": "^1.0.4"
-  }
+  } 
 }

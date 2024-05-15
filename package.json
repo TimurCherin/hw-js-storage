@@ -1,18 +1,32 @@
 {
+  "name": "hw-js-storage",
+  "version": "2.0.0",
+  "description": "",
   "homepage": "https://timurcherin.github.io/hw-js-storage/",
-  "dependencies": {
-    "gh-pages": "^6.1.1",
-    "handlebars": "^4.7.8",
-    "nanoid": "^5.0.6",
-    "parcel": "^2.11.0",
-    "uuid": "^9.0.1"
-  },
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html"
+    "build": "parcel build src/*.html --public-url /hw-js-storage/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://timurcherin.github.io/hw-js-storage/"
+  },
+  "keywords": [],
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://timurcherin.github.io/hw-js-storage/"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "parcel-transformer-hbs": "^1.0.4"
-  }
+    "parcel-transformer-hbs": "^1.0.4",
+    "posthtml-include": "^1.7.4"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }

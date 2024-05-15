@@ -1,0 +1,3 @@
+{{#each taskList}}
+<li class="todo-item {{#if status}} done {{/if}}">{{task}}<button class="todo-button" type="submit" data-id="{{id}}">{{#if status}}Restart{{else}}Get done{{/if}}</button></li>
+{{/each}}

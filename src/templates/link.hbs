@@ -1,0 +1,6 @@
+{{#each linkList}}
+<li class="link-item"><a target="_blank" href="{{this}}">{{this}}</a>
+        <button class="del-btn" data-delete="{{@index}}" type="button">Delete</button>
+        <button class="edit-btn" data-edit="{{@index}}" type="button">Edit</button>
+</li>
+{{/each}}

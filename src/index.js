@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import classes from "./css/style.css";
 import listTemplate from "./templates/template.hbs";
 import linkTemplate from "./templates/link.hbs";
 import templateContact from "./templates/contactTemplate.hbs";

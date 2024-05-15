@@ -581,6 +581,8 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"8lqZg":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _uuid = require("uuid");
+var _styleCss = require("./css/style.css");
+var _styleCssDefault = parcelHelpers.interopDefault(_styleCss);
 var _templateHbs = require("./templates/template.hbs");
 var _templateHbsDefault = parcelHelpers.interopDefault(_templateHbs);
 var _linkHbs = require("./templates/link.hbs");
@@ -831,7 +833,7 @@ function closeModal() {
     modal.classList.add("hide");
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./templates/template.hbs":"73Ftt","./templates/link.hbs":"i1MdA","./templates/contactTemplate.hbs":"dC9RQ","uuid":"j4KJi"}],"gkKU3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./templates/template.hbs":"73Ftt","./templates/link.hbs":"i1MdA","./templates/contactTemplate.hbs":"dC9RQ","uuid":"j4KJi","./css/style.css":"6ZQyu"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -12469,6 +12471,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4rkIz","8lqZg"], "8lqZg", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6ZQyu":[function() {},{}]},["4rkIz","8lqZg"], "8lqZg", "parcelRequire94c2")
 
 //# sourceMappingURL=index.975ef6c8.js.map
